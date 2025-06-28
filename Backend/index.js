@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
+import userRouter from './routes/userRoutes.js';
+import ownerRouter from './routes/ownerRoutes.js';
 
 dotenv.config();
 
@@ -18,6 +20,8 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+app.use('/api/user',userRouter);
+app.use('/api/owner',ownerRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
