@@ -39,7 +39,7 @@ const CarSchema = new Schema({
         type:String,
         required:true,
     },
-    pricePerDAy: {
+    pricePerDay: {
         type: Number,
         required: true,
     },
