@@ -6,7 +6,7 @@ import 'dotenv/config';
 //Generate token
 const generateAuthToken = (userId)=>{
     const payload = {userId};
-    return jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'1h'});
+    return jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:'24h'});
 }
 
 //regiter user
