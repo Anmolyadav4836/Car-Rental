@@ -45,7 +45,7 @@ import car_image4 from "./car_image4.png"
 export const cityList = ['New York', 'Los Angeles', 'Houston', 'Chicago']
 
 export const assets = {
-    file,
+    
     logo,
     gmail_logo,
     facebook_logo,
