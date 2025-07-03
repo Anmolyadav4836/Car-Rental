@@ -41,9 +41,11 @@ import car_image2 from "./car_image2.png"
 import car_image3 from "./car_image3.png"
 import car_image4 from "./car_image4.png"
 
+
 export const cityList = ['New York', 'Los Angeles', 'Houston', 'Chicago']
 
 export const assets = {
+    file,
     logo,
     gmail_logo,
     facebook_logo,
@@ -103,7 +105,7 @@ export const ownerMenuLinks = [
 
 export const dummyUserData = {
   "_id": "6847f7cab3d8daecdb517095",
-  "name": "GreatStack",
+  "name": "AnmolYadav",
   "email": "admin@example.com",
   "role": "owner",
   "image": user_profile,
@@ -158,7 +160,7 @@ export const dummyCarData = [
         "pricePerDay": 200,
         "location": "Los Angeles",
         "description": "The Jeep Wrangler is a mid-size luxury SUV produced by Jeep. The Wrangler made its debut in 2003 as the first SUV ever produced by Jeep.",
-        "isAvaliable": true,
+        "isAvaliable": false,
         "createdAt": "2025-04-16T08:34:39.592Z",
     },
     {
