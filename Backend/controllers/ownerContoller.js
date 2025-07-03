@@ -105,13 +105,13 @@ export const deleteCar = async (req,res)=>{
             return res.status(400).json({success:false,message:'Car does not belong to user'})
         }
 
-        car.owner = null;
+        // car.owner = null;
         car.isAvailable = false; //we'll not delete the car from imagekit as it had been used by other users
         await car.save();
         return res.status(200).json({success:true,message:'Car deleted successfully'})
     }catch(error){
         console.log(error.message)
-        res.status(500).json({success:false,message:'Error in toggling car availability'})
+        res.status(500).json({success:false,message:'Error in deleting '})
     }
 }
 
@@ -127,7 +127,7 @@ export const getDashboardData = async (req,res)=>{
         const bookings = await Booking.find({owner:_id}).populate('car').sort({createdAt:-1});
 
         const pendingBookings = bookings.filter(b => b.status === 'pending');
-        const completedBookings = bookings.filter(b => b.status === 'completed');
+        const completedBookings = bookings.filter(b => b.status === 'confirmed');
 
         // Calculate monthly revenue from completed bookings
         const monthlyRevenue = completedBookings.reduce((acc, booking) => acc + booking.price, 0);

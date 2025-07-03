@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
+import Car from "../models/Car.js";
 
 //Generate token
 const generateAuthToken = (userId)=>{
@@ -83,5 +84,52 @@ export const getUserData = async (req,res)=>{
     }catch(error){
         console.log(error.message)
         res.status(500).json({message:'Error in getting user data'})
+    }
+}
+
+//get cars of user
+export const getCars = async (req,res)=>{    
+    try{
+       
+        const cars = await Car.find({isAvailable: true});
+        res.status(200).json({success:true,cars})
+    }catch(error){
+        console.log(error.message)
+        res.status(500).json({message:'Error in getting cars'})
+    }
+}
+
+//update user profile
+export const updateUserProfile = async (req,res)=>{
+    try{
+        const {name,email,password} = req.body;
+        const {_id} = req.user;
+        if(!name || !email || !password || password.length<6){
+            return res.status(400).json({
+                success:false,
+                message:'Please provide all the details or choose strong password'})
+        }
+
+        const user = await User.findById(_id);
+        if(!user){
+            return res.status(400).json({success:false,message:'User not found'})
+        }
+
+        if(name){
+            user.name = name;
+        }
+        if(email){
+            user.email = email;
+        }
+        if(password){
+            const hashedPassword = await bcrypt.hash(password,10);
+            user.password = hashedPassword;
+        }
+        await user.save();
+
+        return res.status(200).json({success:true,message:'User profile updated successfully'})
+    }catch(error){
+        console.log(error.message)
+        res.status(500).json({message:'Error in updating user profile'})
     }
 }
