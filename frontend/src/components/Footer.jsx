@@ -71,14 +71,14 @@ const Footer = () => {
                     ))}
                 </motion.div>
             </motion.div>
-            <motion.p
+            {/* <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.4 }}
                 className="py-4 text-center text-sm md:text-base text-gray-500/80 "
             >
                 Copyright {currentYear} - All Right Reserved.
-            </motion.p>
+            </motion.p> */}
         </motion.div>
     );
 }
