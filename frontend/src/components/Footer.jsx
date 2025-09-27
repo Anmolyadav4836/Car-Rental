@@ -77,7 +77,7 @@ const Footer = () => {
                 transition={{ duration: 0.5, delay: 1.4 }}
                 className="py-4 text-center text-sm md:text-base text-gray-500/80 "
             >
-                Copyright {currentYear} © Anmol-Yadav All Right Reserved.
+                Copyright {currentYear} - All Right Reserved.
             </motion.p>
         </motion.div>
     );
